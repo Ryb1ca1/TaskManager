@@ -1,44 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple TODO App</title>
+    <link rel="stylesheet" href="styles/style.css" />
 </head>
-
 <body class="bg-light">
+<nav class="navbar">
+    <div class="nav-container">
+        <a class="navbar-brand">Awesome Kanban Board</a>
+        <form id="app-login-form" class="login-form">
+            <input name="login" autocomplete="username" type="text" placeholder="Login" aria-label="Login" />
+            <input name="password" autocomplete="current-password" type="password" placeholder="Password" aria-label="Password" />
+            <button id="app-login-btn" type="submit">Sign In</button>
+        </form>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">SimpleTODO</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                </ul>
-                <form id="app-login-form" class="d-flex">
-                    <input class="form-control me-2" name="login" autocomplete="username" type="text"
-                        placeholder="Login" aria-label="Login">
-                    <input class="form-control me-2" name="password" autocomplete="current-password" type="password"
-                        placeholder="Password" aria-label="Password">
-                    <button id="app-login-btn" class="btn btn-outline-info" type="submit">Sign In</button>
-                </form>
+        <div id="userMenuContainer" class="user-menu-container hidden">
+            <div id="userInfo" class="user-info">
+                <div class="avatar-css">
+                    <svg width="28" height="28" viewBox="0 0 28 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.9464 23.4224C17.8296 22.1328 17.8744 21.2328 17.8744 20.0544C18.4584 19.748 19.5048 17.7944 19.6816 16.144C20.1408 16.1064 20.8648 15.6584 21.0768 13.8896C21.1912 12.94 20.7368 12.4056 20.46 12.2376C21.2072 9.99041 22.7592 3.03841 17.5896 2.32001C17.0576 1.38561 15.6952 0.912811 13.9248 0.912811C6.84161 1.04321 5.98721 6.26161 7.54001 12.2376C7.26401 12.4056 6.80961 12.94 6.92321 13.8896C7.13601 15.6584 7.85921 16.1064 8.31841 16.144C8.49441 17.7936 9.58241 19.748 10.168 20.0544C10.168 21.2328 10.212 22.1328 10.0952 23.4224C9.08641 26.1344 3.90561 26.3464 0.916809 28.9616C4.04161 32.108 9.10561 34.3584 14.4496 34.3584C19.7936 34.3584 26.0752 30.1392 27.1208 28.988C24.1504 26.3488 18.9576 26.144 17.9464 23.4224Z" fill="black"/>
+                    </svg>
+                </div>
+                <span id="arrow" class="arrow down"></span>
+            </div>
+            <div id="dropdownMenu" class="dropdown-menu">
+                <a href="#" data-menu="home">Home</a>
+                <a href="#" data-menu="my-task">My task</a>
+                <a href="#" data-menu="my-account">My Account</a>
+                <a href="#" id="logout">Log Out</a>
             </div>
         </div>
-    </nav>
-    <div class="container">
-        <p id="content">Please Sign In to see your tasks!</p>
     </div>
+</nav>
 
+<main class="main-content">
+    <div id="content" class="hidden"></div>
+    <div id="mainTextPanel" class="main-text-panel">
+        <div class="panel-header">
+            <h2>Main page – performance issues</h2>
+            <button class="close-btn" aria-label="Close">&times;</button>
+        </div>
+        <div class="panel-content">
+            <p>
+                Это был тёмный лес, издали казавшийся непроходимым. Там Пахапиль охотился,
+                глушил рыбу, спал на еловых ветках. Короче – жил, пока русские не выгнали оккупантов.
+                А когда немцы ушли, Пахапиль вернулся. Он появился в Раквере, где советский капитан
+                наградил его медалью. Медаль была украшена четырьмя непонятными словами,
+                фигурой и восклицательным знаком.
+            </p>
+        </div>
+    </div>
+    <div id="kanban-container" class="kanban-board-container hidden">
+        <div id="kanban-board" class="kanban-board">
+            <div class="kanban-column" id="backlog" data-list="backlog">
+                <h3>Backlog</h3>
+                <ul class="task-list" data-list="backlog"></ul>
+                <button class="add-card-btn" data-list="backlog">+ Add card</button>
+            </div>
+            <div class="kanban-column" id="ready" data-list="ready">
+                <h3>Ready</h3>
+                <ul class="task-list" data-list="ready"></ul>
+                <button class="add-card-btn" data-list="ready" disabled>+ Add card</button>
+            </div>
+            <div class="kanban-column" id="in-progress" data-list="in-progress">
+                <h3>In progress</h3>
+                <ul class="task-list" data-list="in-progress"></ul>
+                <button class="add-card-btn" data-list="in-progress" disabled>+ Add card</button>
+            </div>
+            <div class="kanban-column" id="finished" data-list="finished">
+                <h3>Finished</h3>
+                <ul class="task-list" data-list="finished"></ul>
+                <button class="add-card-btn" data-list="finished" disabled>+ Add card</button>
+            </div>
 
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="footer-left">
+        <span id="active-tasks">Active tasks: 0</span>
+        <span id="finished-tasks">Finished tasks: 0</span>
+    </div>
+    <div class="footer-right">
+        Kanban board by Vladimir, 2025
+    </div>
+</footer>
 </body>
-
 </html>

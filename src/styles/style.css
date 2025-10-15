@@ -1,3 +1,600 @@
+/* Общие стили */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+}
+
+body {
+    min-height: 100vh;
+}
+
 #app-login-btn {
-  width: 160px;
+    width: 100%;
+    max-width: 160px;
+    background-color: white;
+    color: black;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+.main-text-panel {
+    position: relative;
+    padding: 2vw 3vw;
+    height: 100%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.13);
+    overflow-y: auto;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.panel-header h2 {
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    margin: 0;
+    font-size: clamp(1.5rem, 5vw, 1.75rem);
+    color: black;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    cursor: pointer;
+    color: #888;
+    transition: color 0.2s;
+    padding: 0 0.5rem;
+    line-height: 1;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+.close-btn:hover {
+    color: #196bbe;
+}
+
+.panel-content p {
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    max-width: 621px;
+    font-size: clamp(0.9rem, 2.5vw, 1.125rem);
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.dragging {
+    opacity: 0.5;
+    border: 2px dashed #007bff;
+    background-color: #e0f0ff;
+}
+
+.navbar {
+    flex: 0 0 auto;
+}
+
+nav.navbar {
+    background-color: #0067A3;
+    color: white;
+    padding: 1rem clamp(1rem, 3vw, 1.5rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.5rem, 2vw, 1rem);
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.navbar-brand {
+    font-weight: 400;
+    text-decoration: none;
+    color: white;
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    font-family: Roboto, sans-serif;
+}
+
+.navbar-brand:hover {
+    font-weight: 400;
+    text-decoration: none;
+    color: white;
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    font-family: Roboto, sans-serif;
+}
+
+.login-form {
+    margin-left: auto;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.login-form input {
+    padding: 0.5rem;
+    font-size: clamp(0.8rem, 2vw, 0.875rem);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 200px;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+.login-form button {
+    padding: 0.5rem 1rem;
+    background-color: #0052cc;
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Roboto, sans-serif;
+}
+
+.login-form button:hover {
+    background-color: #003d99;
+}
+
+.user-menu-container {
+    margin-left: auto;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    user-select: none;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+.user-info {
+    display: contents;
+}
+
+.avatar-css {
+    width: clamp(1.5rem, 4vw, 2rem);
+    height: clamp(1.5rem, 4vw, 2rem);
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    color: white;
+    font-weight: 400;
+    font-size: clamp(0.7rem, 2vw, 0.875rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    font-family: Roboto, sans-serif;
+}
+
+.arrow {
+    width: 0;
+    height: 0;
+    border-left: 0.375rem solid transparent;
+    border-right: 0.375rem solid transparent;
+    border-top: 0.375rem solid white;
+    transition: transform 0.3s ease;
+}
+
+.arrow.down {
+    transform: rotate(0deg);
+}
+
+.arrow.up {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 2.5rem;
+    right: 0;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    min-width: 150px;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    font-size: clamp(0.8rem, 2vw, 0.875rem);
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.625rem 1rem;
+    color: black;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+.dropdown-menu a:hover {
+    margin: 1px;
+    border-radius: 8px;
+    background-color: #0079BF;
+}
+
+main.main-content {
+    flex: 1 0 auto;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    background-color: #0079BF;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+/* Канбан-доска */
+.kanban-board {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    max-width: 100%;
+    overflow-x: auto;
+    align-items: flex-start;
+}
+
+.kanban-column {
+    background: #EBECF0;
+    border-radius: 8px;
+    padding: 0.75rem;
+    width: clamp(200px, 30vw, 250px);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 50px;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+.kanban-column h3 {
+    margin: 0 0 0.625rem 0;
+    font-weight: 400;
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    color: #333;
+    font-family: Roboto, sans-serif;
+}
+
+.kanban-column.drag-over {
+    background-color: #e0f7ff;
+    border: 2px dashed #007bff;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.625rem 0;
+    overflow-y: auto;
+}
+
+.task-list li {
+    background: #FFFFFF;
+    border-radius: 4px;
+    padding: 0.625rem 0.75rem;
+    margin-bottom: 0.5rem;
+    cursor: default;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 0.375rem 0.625rem;
+    border-radius: 4px;
+    background: #f4f5f7;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    min-width: 0;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+.task-text {
+    flex-grow: 1;
+    min-width: 0;
+    max-width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+.task-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+.icon-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+.icon-btn:hover {
+    color: #007bff;
+}
+
+.icon-btn svg {
+    width: clamp(1rem, 3vw, 1.25rem);
+    height: clamp(1rem, 3vw, 1.25rem);
+    pointer-events: none;
+}
+
+.add-card-btn {
+    display: flex;
+    background: #EBECF0;
+    align-items: flex-start;
+    color: #5E6C84;
+    border: none;
+    padding-top: 0.5rem;
+    font-weight: 400;
+    cursor: pointer;
+    user-select: none;
+    font-family: Roboto, sans-serif;
+}
+
+.add-card-btn:disabled {
+    cursor: not-allowed;
+}
+
+input.new-task-input {
+    padding: 0.375rem 0.625rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 0.375rem;
+    font-size: clamp(0.8rem, 2vw, 0.875rem);
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+/* Панель администратора */
+.admin-panel {
+    background-color: #f0f4f8;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    border-radius: 8px;
+    max-width: 90%;
+    margin: 1rem auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+/* Заголовок */
+.admin-panel h2 {
+    margin-bottom: 1rem;
+    color: #0052cc;
+    font-weight: 400;
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+    text-align: center;
+    font-family: Roboto, sans-serif;
+}
+
+/* Таблица пользователей */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.25rem;
+}
+
+.user-table th, .user-table td {
+    border: 1px solid #ddd;
+    padding: clamp(0.5rem, 2vw, 0.625rem);
+    text-align: left;
+    font-size: clamp(0.8rem, 2vw, 0.875rem);
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+.user-table th {
+    background-color: #e3f2fd;
+    color: #0052cc;
+}
+
+.user-table tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+/* Кнопки */
+button {
+    background-color: #0052cc;
+    border: none;
+    color: white;
+    padding: clamp(0.5rem, 2vw, 0.875rem);
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: clamp(0.8rem, 2vw, 0.875rem);
+    transition: background-color 0.3s ease;
+    font-family: Roboto, sans-serif;
+}
+
+button:hover {
+    background-color: #003d99;
+}
+
+.delete-user-btn {
+    background-color: #cc3300;
+}
+
+.delete-user-btn:hover {
+    background-color: #991f00;
+}
+
+/* Форма добавления пользователя */
+.user-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: clamp(0.8rem, 2vw, 0.875rem);
+    font-family: Roboto, sans-serif;
+}
+
+.user-form input[type="text"],
+.user-form input[type="password"],
+.user-form select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: clamp(0.8rem, 2vw, 0.875rem);
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+/* Контейнер формы */
+.user-form {
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.user-form button.submit-btn {
+    width: 100%;
+}
+
+/* Футер */
+footer.footer {
+    flex-shrink: 0;
+    background-color: #0067A3;
+    color: #eee;
+    padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
+    font-size: clamp(0.8rem, 2vw, 0.875rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+.footer-left span {
+    margin-right: 1rem;
+    white-space: nowrap;
+}
+
+.footer-right {
+    font-weight: 400;
+    white-space: nowrap;
+    font-family: Roboto, sans-serif;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    .kanban-board {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .kanban-column {
+        width: 100%;
+        max-width: none;
+    }
+
+    .nav-container {
+        display: contents;
+        align-items: flex-start;
+    }
+
+    .login-form {
+        margin-left: 0;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .login-form input {
+        max-width: none;
+    }
+
+    .main-text-panel {
+        margin: 0.5rem;
+        padding: 1rem;
+    }
+
+    .panel-content p {
+        max-width: 100%;
+    }
+
+    .admin-panel {
+        max-width: 100%;
+        margin: 0.5rem;
+    }
+
+    .user-form {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-brand {
+        font-size: clamp(0.9rem, 4vw, 1rem);
+    }
+
+    .login-form input,
+    .login-form button {
+        font-size: clamp(0.75rem, 3vw, 0.8rem);
+    }
+
+    .panel-header h2 {
+        font-size: clamp(1.2rem, 4vw, 1.5rem);
+    }
+
+    .close-btn {
+        font-size: clamp(1.2rem, 4vw, 1.5rem);
+    }
+
+    .dropdown-menu {
+        min-width: 120px;
+        font-size: clamp(0.75rem, 3vw, 0.8rem);
+    }
+
+    .task-text {
+        max-width: 70%;
+    }
+
+    .admin-panel h2 {
+        font-size: clamp(1rem, 4vw, 1.25rem);
+    }
+
+    .user-table th,
+    .user-table td {
+        font-size: clamp(0.7rem, 3vw, 0.75rem);
+        padding: 0.5rem;
+    }
 }
